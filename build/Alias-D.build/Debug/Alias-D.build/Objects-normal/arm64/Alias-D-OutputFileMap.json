@@ -1,0 +1,38 @@
+{
+  "" : {
+    "diagnostics" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/Alias-D-master.dia",
+    "emit-module-dependencies" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/Alias-D-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/Alias-D-master-emit-module.dia",
+    "swift-dependencies" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/Alias-D-master.swiftdeps"
+  },
+  "/Users/denysspasiuk/Personal/Alias-D/Alias-D/Alias_DApp.swift" : {
+    "const-values" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/Alias_DApp.swiftconstvalues",
+    "dependencies" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/Alias_DApp.d",
+    "diagnostics" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/Alias_DApp.dia",
+    "index-unit-output-path" : "/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/Alias_DApp.o",
+    "llvm-bc" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/Alias_DApp.bc",
+    "object" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/Alias_DApp.o",
+    "swift-dependencies" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/Alias_DApp.swiftdeps",
+    "swiftmodule" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/Alias_DApp~partial.swiftmodule"
+  },
+  "/Users/denysspasiuk/Personal/Alias-D/Alias-D/ContentView.swift" : {
+    "const-values" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/denysspasiuk/Personal/Alias-D/build/Alias-D.build/Debug/Alias-D.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  }
+}
