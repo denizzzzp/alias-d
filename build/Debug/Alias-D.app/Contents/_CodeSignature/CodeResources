@@ -6,11 +6,19 @@
 	<dict>
 		<key>Resources/AppIcon.icns</key>
 		<data>
-		/YizuoxrVqWwXCgSK/16OtCxxmE=
+		1Se7SciaiJuRUnj4YSIpFluMWb4=
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		yKIEa/w9FWQx6CdIZhv4/1yOaqA=
+		hkXRaYcKwRYQ2gx3j5X4g9ffxBc=
+		</data>
+		<key>Resources/appstore.png</key>
+		<data>
+		7UdJN2U1cTXa0rHNjU5XL9EMtSI=
+		</data>
+		<key>Resources/playstore.png</key>
+		<data>
+		7UdJN2U1cTXa0rHNjU5XL9EMtSI=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -19,10 +27,10 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			4ZtqyvE+k0q3mAkfUgM+XWgtkeg=
+			aVedvXzIQEJCQALBkQwVoN7rhT8=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"e19b6acaf13e934ab798091f52033e5d682d91e8"</string>
+			<string>cdhash H"69579dbd7cc84042424002c1910c15a0deeb853f"</string>
 		</dict>
 		<key>MacOS/__preview.dylib</key>
 		<dict>
@@ -37,14 +45,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0IJC456VfRsP+Xjb6588LG2s0wvAHfI136ojv2XUEqs=
+			FjYSlH0GEbehtmXmRmIUNN2ivGrC2WwkkyjQcSaqihs=
 			</data>
 		</dict>
 		<key>Resources/Assets.car</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			2JmXh16MMiw3LwLQRrUK7JxsmoZCgcoL7UaAfaHQU3s=
+			UyOaKJKptLXx5OoMdPK+rgr/I7Br/lWuEAeIBE+M/GI=
+			</data>
+		</dict>
+		<key>Resources/appstore.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			1hXXUpOmRzEY3XXY7/hKCk4LkWATdXGtPB4RhxyLxsE=
+			</data>
+		</dict>
+		<key>Resources/playstore.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			1hXXUpOmRzEY3XXY7/hKCk4LkWATdXGtPB4RhxyLxsE=
 			</data>
 		</dict>
 	</dict>

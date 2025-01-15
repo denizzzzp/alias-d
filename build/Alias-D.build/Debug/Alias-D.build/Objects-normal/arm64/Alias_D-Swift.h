@@ -306,9 +306,15 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 SWIFT_CLASS("_TtC7Alias_D11AppDelegate")
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 - (void)applicationDidFinishLaunching:(NSNotification * _Nonnull)notification;
+- (void)showAboutPanel;
 - (void)showWindow;
 - (void)quitApp;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface AppDelegate (SWIFT_EXTENSION(Alias_D)) <NSWindowDelegate>
+- (void)windowWillClose:(NSNotification * _Nonnull)notification;
 @end
 
 

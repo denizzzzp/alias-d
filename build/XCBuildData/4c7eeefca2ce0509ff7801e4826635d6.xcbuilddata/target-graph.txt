@@ -1,0 +1,6 @@
+Target dependency graph (3 targets)
+Target 'Alias-DUITests' in project 'Alias-D'
+➜ Explicit dependency on target 'Alias-D' in project 'Alias-D'
+Target 'Alias-DTests' in project 'Alias-D'
+➜ Explicit dependency on target 'Alias-D' in project 'Alias-D'
+Target 'Alias-D' in project 'Alias-D' (no dependencies)

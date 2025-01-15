@@ -31,8 +31,8 @@ extension ColorResource {
 @available(iOS 11.0, macOS 10.7, tvOS 11.0, *)
 extension ImageResource {
 
-    /// The "aliase-d" asset catalog image resource.
-    static let aliaseD = ImageResource(name: "aliase-d", bundle: resourceBundle)
+    /// The "MenuBarIcon" asset catalog image resource.
+    static let menuBarIcon = ImageResource(name: "MenuBarIcon", bundle: resourceBundle)
 
 }
 
@@ -73,10 +73,10 @@ extension SwiftUI.ShapeStyle where Self == SwiftUI.Color {
 @available(macCatalyst, unavailable)
 extension AppKit.NSImage {
 
-    /// The "aliase-d" asset catalog image.
-    static var aliaseD: AppKit.NSImage {
+    /// The "MenuBarIcon" asset catalog image.
+    static var menuBarIcon: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
-        .init(resource: .aliaseD)
+        .init(resource: .menuBarIcon)
 #else
         .init()
 #endif
@@ -90,10 +90,10 @@ extension AppKit.NSImage {
 @available(watchOS, unavailable)
 extension UIKit.UIImage {
 
-    /// The "aliase-d" asset catalog image.
-    static var aliaseD: UIKit.UIImage {
+    /// The "MenuBarIcon" asset catalog image.
+    static var menuBarIcon: UIKit.UIImage {
 #if !os(watchOS)
-        .init(resource: .aliaseD)
+        .init(resource: .menuBarIcon)
 #else
         .init()
 #endif

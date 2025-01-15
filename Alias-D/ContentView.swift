@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import AppKit
 import Foundation
 
 enum AliasType {
@@ -25,12 +25,16 @@ struct ContentView: View {
     @State private var aliasItems: [AliasItem] = []
     @State private var newAliasType: AliasType = .alias
     @State private var newAliasContent: String = ""
+    @State private var isIntegratedWithZshrc: Bool = false
     
     var body: some View {
-        VStack {
-            Text("Alias-D редактор алиасов")
-                .font(.headline)
+        VStack {                
+            Toggle("Интеграция с .zshrc", isOn: $isIntegratedWithZshrc)
+                .onChange(of: isIntegratedWithZshrc) { newValue in
+                    toggleZshrcIntegration(enabled: newValue)
+                }
                 .padding()
+                
             Spacer()
             List {
                 ForEach($aliasItems) { $alias in
@@ -52,6 +56,16 @@ struct ContentView: View {
                             TextEditor(text: $alias.content)
                                 .frame(height: 100)
                                 .border(Color.gray, width: 1)
+                                .font(.system(size: NSFont.systemFontSize + 2))
+                        }
+                        
+                        Button(action: {
+                            if let index = aliasItems.firstIndex(where: { $0.id == alias.id }) {
+                                aliasItems.remove(at: index)
+                            }
+                        }) {
+                            Image(systemName: "trash")
+                                .foregroundColor(.yellow)
                         }
                     }
                     .padding(.vertical, 4)
@@ -73,6 +87,7 @@ struct ContentView: View {
                     TextEditor(text: $newAliasContent)
                         .frame(height: 100)
                         .border(Color.gray, width: 1)
+                        .font(.system(size: NSFont.systemFontSize + 2))
                 }
                 
                 Button(action: addNewAlias) {
@@ -94,6 +109,7 @@ struct ContentView: View {
         .padding()
         .onAppear {
             loadFile()
+            checkZshrcIntegration()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
@@ -103,6 +119,45 @@ struct ContentView: View {
         aliasItems.append(AliasItem(isActive: true, type: newAliasType, content: newAliasContent))
         newAliasContent = ""
     }
+    
+    private func checkZshrcIntegration() {
+        let fileManager = FileManager.default
+        let homeDirectory = fileManager.homeDirectoryForCurrentUser.path
+        let zshrcPath = "\(homeDirectory)/.zshrc"
+        
+        do {
+            let content = try String(contentsOfFile: zshrcPath, encoding: .utf8)
+            let sourceLine = "source \(homeDirectory)/.alias-d/dotfile.zsh"
+            isIntegratedWithZshrc = content.contains(sourceLine) && !content.contains("# \(sourceLine)")
+        } catch {
+            print("Ошибка при проверке .zshrc: \(error.localizedDescription)")
+        }
+    }
+    
+    private func toggleZshrcIntegration(enabled: Bool) {
+        let fileManager = FileManager.default
+        let homeDirectory = fileManager.homeDirectoryForCurrentUser.path
+        let zshrcPath = "\(homeDirectory)/.zshrc"
+        let sourceLine = "source \(homeDirectory)/.alias-d/dotfile.zsh"
+        
+        do {
+            var content = try String(contentsOfFile: zshrcPath, encoding: .utf8)
+            
+            // Удаляем существующие строки (закомментированные и нет)
+            content = content.components(separatedBy: .newlines)
+                .filter { !$0.contains(sourceLine) }
+                .joined(separator: "\n")
+            
+            // Добавляем новую строку с переносом строки
+            content += "\n" + (enabled ? sourceLine : "# \(sourceLine)")
+            
+            try content.write(toFile: zshrcPath, atomically: true, encoding: .utf8)
+            print("Интеграция с .zshrc \(enabled ? "включена" : "выключена")")
+        } catch {
+            print("Ошибка при обновлении .zshrc: \(error.localizedDescription)")
+        }
+    }
+    
     func loadFile() {
         let fileManager = FileManager.default
         let homeDirectory = fileManager.homeDirectoryForCurrentUser.path
@@ -120,22 +175,32 @@ struct ContentView: View {
 
             var tempFunction = ""
             var inFunction = false
+            var isActiveFunction = true
 
             aliasItems = []
 
             for line in lines {
-                if line.contains("() {") {  // Начало функции
+                if line.contains("() {") || (line.contains("# ") && line.contains("() {")) {  // Начало функции
                     inFunction = true
-                    tempFunction = line + "\n"  // Начинаем собирать функцию
+                    isActiveFunction = !line.hasPrefix("# ")
+                    tempFunction = isActiveFunction ? line + "\n" : String(line.dropFirst(2)) + "\n"  // Начинаем собирать функцию
                 } else if inFunction {
-                    tempFunction += line + "\n"
-                    if line.trimmingCharacters(in: .whitespacesAndNewlines).hasPrefix("}") {  // Конец функции
-                        aliasItems.append(AliasItem(isActive: true, type: .function, content: tempFunction))
+                    if isActiveFunction {
+                        tempFunction += line + "\n"
+                    } else {
+                        let lineContent: String = line.hasPrefix("# ") ? String(line.dropFirst(2)) : line
+                        tempFunction += lineContent + "\n"
+                    }
+                    if line.trimmingCharacters(in: .whitespacesAndNewlines).hasPrefix("}") || 
+                       line.trimmingCharacters(in: .whitespacesAndNewlines).hasPrefix("# }") {  // Конец функции
+                        aliasItems.append(AliasItem(isActive: isActiveFunction, type: .function, content: tempFunction))
                         inFunction = false
                         tempFunction = ""
                     }
-                } else if line.hasPrefix("alias") {  // Алиас
-                    aliasItems.append(AliasItem(isActive: true, type: .alias, content: line))
+                } else if line.hasPrefix("alias") || line.hasPrefix("# alias") {  // Алиас
+                    let isActive = !line.hasPrefix("# ")
+                    let content = isActive ? line : String(line.dropFirst(2)) // Убираем "# " если неактивный
+                    aliasItems.append(AliasItem(isActive: isActive, type: .alias, content: content))
                 }
             }
 
@@ -160,16 +225,32 @@ struct ContentView: View {
             // Сохраняем файл
             var content = ""
             for item in aliasItems {
-                if item.isActive {
-                    // Если алиас или функция активен — записываем как есть
-                    content += item.content + "\n"
+                if item.type == .function {
+                    if !item.isActive {
+                        // Добавляем # к каждой строке функции
+                        content += item.content.split(separator: "\n")
+                            .map { "# " + $0 }
+                            .joined(separator: "\n") + "\n"
+                    } else {
+                        content += item.content
+                    }
                 } else {
-                    // Если не активен — закомментировать
-                    content += "# " + item.content + "\n#"
+                    // Для алиасов оставляем старую логику
+                    let itemContent = item.isActive ? item.content : "# " + item.content
+                    content += itemContent.trimmingCharacters(in: .whitespacesAndNewlines) + "\n"
                 }
             }
+            
+            // Удаляем пустые строки
+            content = content.components(separatedBy: .newlines)
+                .filter { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
+                .joined(separator: "\n")
 
             try content.write(toFile: filePath, atomically: true, encoding: .utf8)
+            
+            // Устанавливаем права на исполнение файла
+            try FileManager.default.setAttributes([.posixPermissions: 0o755], ofItemAtPath: filePath)
+            
             print("Файл успешно сохранен в \(filePath)")
         } catch {
             print("Ошибка сохранения файла: \(error.localizedDescription)")
@@ -177,4 +258,3 @@ struct ContentView: View {
     }
     
 }
-

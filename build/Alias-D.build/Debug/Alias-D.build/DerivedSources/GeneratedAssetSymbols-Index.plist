@@ -10,11 +10,11 @@
 			<key>catalogPath</key>
 			<string>/Users/denysspasiuk/Personal/Alias-D/Alias-D/Assets.xcassets</string>
 			<key>objcSymbol</key>
-			<string>ACImageNameAliaseD</string>
+			<string>ACImageNameMenuBarIcon</string>
 			<key>relativePath</key>
-			<string>./aliase-d.imageset</string>
+			<string>./MenuBarIcon.imageset</string>
 			<key>swiftSymbol</key>
-			<string>aliaseD</string>
+			<string>menuBarIcon</string>
 		</dict>
 	</array>
 	<key>symbols</key>

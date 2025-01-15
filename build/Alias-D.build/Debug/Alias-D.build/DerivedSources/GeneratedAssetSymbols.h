@@ -6,7 +6,7 @@
 #define AC_SWIFT_PRIVATE
 #endif
 
-/// The "aliase-d" asset catalog image resource.
-static NSString * const ACImageNameAliaseD AC_SWIFT_PRIVATE = @"aliase-d";
+/// The "MenuBarIcon" asset catalog image resource.
+static NSString * const ACImageNameMenuBarIcon AC_SWIFT_PRIVATE = @"MenuBarIcon";
 
 #undef AC_SWIFT_PRIVATE
